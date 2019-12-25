@@ -1,0 +1,27 @@
+<doctype html>
+<head>
+    <title>Tornado Music Database</title>
+</head>
+
+<h2>Tornado Music Database</h2>
+
+<p><p>
+<a href="{{ url_for('.new_album') }}"> New Album </a>
+
+{% with messages = get_flashed_messages() %}
+  {% messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% end %}
+    </ul>
+  {% end %}
+{% end %}
+
+{% from "_formhelpers.html" import render_field %}
+<form method=post>
+  <dl>
+    {{ render_field(form.select) }}
+  </dl>
+  <p><input type=submit value=Search>
+</form>
